@@ -8,11 +8,13 @@ import {
   ImageBackground,
 } from "react-native";
 import WelcomeScreen from "./screens/WelcomeScreen";
+import ViewImageScreen from "./screens/ViewImageScreen";
 
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
-      <WelcomeScreen />
+      {/* <WelcomeScreen /> */}
+      <ViewImageScreen />
     </SafeAreaView>
   );
 }
@@ -20,11 +22,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-  },
-  image: {
     flex: 1,
-    width: "100%",
-    height: "100%",
-    resizeMode: "contain",
   },
 });
