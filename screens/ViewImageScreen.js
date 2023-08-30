@@ -1,12 +1,21 @@
 import { StyleSheet, Text, View, Image } from "react-native";
 import React from "react";
 import Colors from "../utils/Colors";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const ViewImageScreen = () => {
   return (
     <View style={styles.container}>
-      <View style={styles.btn1} />
-      <View style={styles.btn2} />
+      <View style={styles.btn1}>
+        <MaterialCommunityIcons name="close" size={35} color="white" />
+      </View>
+      <View style={styles.btn2}>
+        <MaterialCommunityIcons
+          name="trash-can-outline"
+          size={35}
+          color="white"
+        />
+      </View>
       <Image
         style={styles.image}
         source={require("../assets/images/shirt.jpeg")}
@@ -20,19 +29,13 @@ export default ViewImageScreen;
 
 const styles = StyleSheet.create({
   btn1: {
-    backgroundColor: Colors.primary,
-    width: 50,
-    height: 50,
     left: 20,
-    top: 20,
+    top: 30,
   },
   btn2: {
-    backgroundColor: Colors.secondary,
-    width: 50,
-    height: 50,
     position: "absolute",
     right: 20,
-    top: 20,
+    top: 30,
   },
 
   container: {
