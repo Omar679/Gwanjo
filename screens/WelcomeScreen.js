@@ -38,8 +38,9 @@ export default WelcomeScreen;
 
 const styles = StyleSheet.create({
   buttonContainer: {
-    position: "absolute",
-    width: 350,
+    width: "100%",
+    padding: 20,
+    alignItems: "center",
   },
   headerContainer: {
     top: 50,
