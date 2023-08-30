@@ -16,8 +16,8 @@ export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       {/* <WelcomeScreen /> */}
-      {/* <ViewImageScreen /> */}
-      <ListingdetailsScreen />
+      <ViewImageScreen />
+      {/* <ListingdetailsScreen /> */}
     </SafeAreaView>
   );
 }
