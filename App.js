@@ -11,13 +11,15 @@ import WelcomeScreen from "./screens/WelcomeScreen";
 import ViewImageScreen from "./screens/ViewImageScreen";
 import Card from "./components/Card";
 import ListingdetailsScreen from "./screens/ListingdetailsScreen";
+import MessagesScreen from "./screens/MessagesScreen";
 
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       {/* <WelcomeScreen /> */}
-      <ViewImageScreen />
+      {/* <ViewImageScreen /> */}
       {/* <ListingdetailsScreen /> */}
+      <MessagesScreen />
     </SafeAreaView>
   );
 }
