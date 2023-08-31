@@ -13,6 +13,7 @@ import Constants from "expo-constants";
 import Screen from "../components/Screen";
 import Colors from "../utils/Colors";
 import ListItemSeperator from "../components/ListItemSeperator";
+import ListItemDeleteAction from "../components/ListItemDeleteAction";
 
 const messages = [
   {
@@ -43,6 +44,7 @@ const MessagesScreen = () => {
             onPress={() => {
               console.log("Message", item);
             }}
+            renderRightActions={ListItemDeleteAction}
           />
         )}
         ItemSeparatorComponent={() => <ListItemSeperator />}
