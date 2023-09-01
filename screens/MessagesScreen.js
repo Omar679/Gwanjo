@@ -7,7 +7,7 @@ import {
   Platform,
   StatusBar,
 } from "react-native";
-import React from "react";
+import { React, useState } from "react";
 import Listitems from "../components/Listitems";
 import Constants from "expo-constants";
 import Screen from "../components/Screen";
@@ -15,7 +15,7 @@ import Colors from "../utils/Colors";
 import ListItemSeperator from "../components/ListItemSeperator";
 import ListItemDeleteAction from "../components/ListItemDeleteAction";
 
-const messages = [
+const Initialmessages = [
   {
     id: 1,
     title: "T1",
@@ -31,10 +31,13 @@ const messages = [
 ];
 
 const MessagesScreen = () => {
+  const [message, setMessage] = useState(Initialmessages);
+  const handleDeleteAction = () => {};
+
   return (
     <Screen>
       <FlatList
-        data={messages}
+        data={message}
         keyExtractor={(messags) => messags.id}
         renderItem={({ item }) => (
           <Listitems
@@ -44,7 +47,11 @@ const MessagesScreen = () => {
             onPress={() => {
               console.log("Message", item);
             }}
-            renderRightActions={ListItemDeleteAction}
+            renderRightActions={() => (
+              <ListItemDeleteAction
+                handleDeleteAction={() => console.log("HeLlo")}
+              />
+            )}
           />
         )}
         ItemSeparatorComponent={() => <ListItemSeperator />}
