@@ -7,7 +7,12 @@ const AppTextInput = ({ icon, ...otherProps }) => {
   return (
     <View style={styles.container}>
       {icon && (
-        <MaterialCommunityIcons name={icon} size={20} color={Colors.medium} />
+        <MaterialCommunityIcons
+          name={icon}
+          size={20}
+          color={Colors.medium}
+          style={styles.icon}
+        />
       )}
       <TextInput style={styles.textInput} {...otherProps} />
     </View>
@@ -25,6 +30,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 15,
     marginVertical: 10,
+  },
+  icon: {
+    marginHorizontal: 10,
   },
   textInput: {
     fontSize: 15,
