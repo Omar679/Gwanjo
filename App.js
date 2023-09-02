@@ -14,23 +14,21 @@ import ListingdetailsScreen from "./screens/ListingdetailsScreen";
 import MessagesScreen from "./screens/MessagesScreen";
 import Icon from "./components/Icon";
 import Screen from "./components/Screen";
+import Listitems from "./components/Listitems";
 
 export default function App() {
   return (
     <Screen>
-      <SafeAreaView style={styles.container}>
-        {/* <WelcomeScreen /> */}
-        {/* <ViewImageScreen /> */}
-        {/* <ListingdetailsScreen /> */}
-        {/* <MessagesScreen /> */}
-        <Icon name="email" />
-      </SafeAreaView>
+      {/* <WelcomeScreen /> */}
+      {/* <ViewImageScreen /> */}
+      {/* <ListingdetailsScreen /> */}
+      {/* <MessagesScreen /> */}
+      {/* <Icon name="email" /> */}
+      <Listitems title="Umar SAbiu" ImageComponent={<Icon name="email" />} />
     </Screen>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
+  container: {},
 });
