@@ -32,6 +32,7 @@ const Initialmessages = [
 
 const MessagesScreen = () => {
   const [messages, setMessages] = useState(Initialmessages);
+  const [refresh, setRefresh] = useState(false);
 
   const handleDeleteAction = (message) => {
     const newMessages = messages.filter((m) => m.id !== message.id);
@@ -57,6 +58,17 @@ const MessagesScreen = () => {
           />
         )}
         ItemSeparatorComponent={() => <ListItemSeperator />}
+        refreshing={refresh}
+        onRefresh={() =>
+          setMessages([
+            {
+              id: 2,
+              title: "T2",
+              description: "D2",
+              image: require("../assets/images/ya-habu.jpeg"),
+            },
+          ])
+        }
       />
     </Screen>
   );
