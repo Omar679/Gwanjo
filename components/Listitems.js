@@ -9,16 +9,26 @@ import AppText from "./AppText";
 import Colors from "../utils/Colors";
 import { TouchableHighlight } from "react-native";
 
-const Listitems = ({ image, title, subtitle, onPress, renderRightActions }) => {
+const Listitems = ({
+  image,
+  title,
+  subtitle,
+  onPress,
+  renderRightActions,
+  ImageComponent,
+}) => {
   return (
     <GestureHandlerRootView>
       <Swipeable renderRightActions={renderRightActions}>
         <TouchableHighlight underlayColor={Colors.light} onPress={onPress}>
           <View style={styles.container}>
-            <Image source={image} style={styles.image} />
+            {ImageComponent}
+            {image && <Image source={image} style={styles.image} />}
             <View style={styles.textContainer}>
               <AppText style={styles.title}>{title}</AppText>
-              <AppText style={styles.subtitle}>{subtitle}</AppText>
+              {subtitle && (
+                <AppText style={styles.subtitle}>{subtitle}</AppText>
+              )}
             </View>
           </View>
         </TouchableHighlight>
@@ -32,10 +42,9 @@ export default Listitems;
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    alignItems: "center",
-    marginHorizontal: 10,
     padding: 15,
-    flex: 1,
+    backgroundColor: Colors.white,
+    alignItems: "center",
   },
   image: {
     width: 70,
@@ -46,7 +55,7 @@ const styles = StyleSheet.create({
     color: Colors.secondary,
   },
 
-  textContainer: { marginHorizontal: 10 },
+  textContainer: { marginHorizontal: 10, justifyContent: "center" },
   title: {
     fontWeight: "bold",
     fontSize: 17,
