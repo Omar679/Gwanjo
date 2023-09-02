@@ -1,40 +1,28 @@
-import {
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  View,
-  Platform,
-  StatusBar,
-  ImageBackground,
-} from "react-native";
-import WelcomeScreen from "./screens/WelcomeScreen";
-import ViewImageScreen from "./screens/ViewImageScreen";
-import Card from "./components/Card";
-import ListingdetailsScreen from "./screens/ListingdetailsScreen";
-import MessagesScreen from "./screens/MessagesScreen";
-import Icon from "./components/Icon";
+import { StyleSheet, Switch } from "react-native";
+import { useState } from "react";
 import Screen from "./components/Screen";
-import Listitems from "./components/Listitems";
-import ProfileScreen from "./screens/ProfileScreen";
-import ListingsScreen from "./screens/ListingsScreen";
+import AppPicker from "./components/AppPicker";
+import AppText from "./components/AppText";
 import AppTextInput from "./components/AppTextInput";
 
+const categories = [
+  { label: "Furniture", value: 1 },
+  { label: "Clothing", value: 2 },
+  { label: "Cameras", value: 3 },
+];
+
 export default function App() {
+  const [category, setCategory] = useState();
   return (
     <Screen>
-      {/* <WelcomeScreen /> */}
-      {/* <ViewImageScreen /> */}
-      {/* <ListingdetailsScreen /> */}
-      {/* <MessagesScreen /> */}
-      {/* <Icon name="email" /> */}
-      {/* <Listitems title="Umar SAbiu" ImageComponent={<Icon name="email" />} /> */}
-      {/* <ProfileScreen /> */}
-      {/* <ListingsScreen /> */}
-      <AppTextInput icon="email" placeholder="Username" />
+      <AppPicker
+        selectedItem={category}
+        onSelectItem={(item) => setCategory(item)}
+        items={categories}
+        icon="apps"
+        placeholder="Categories"
+      />
+      <AppTextInput icon="email" placeholder="email" />
     </Screen>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {},
-});
