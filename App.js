@@ -16,6 +16,7 @@ import Icon from "./components/Icon";
 import Screen from "./components/Screen";
 import Listitems from "./components/Listitems";
 import ProfileScreen from "./screens/ProfileScreen";
+import ListingsScreen from "./screens/ListingsScreen";
 
 export default function App() {
   return (
@@ -26,7 +27,8 @@ export default function App() {
       {/* <MessagesScreen /> */}
       {/* <Icon name="email" /> */}
       {/* <Listitems title="Umar SAbiu" ImageComponent={<Icon name="email" />} /> */}
-      <ProfileScreen />
+      {/* <ProfileScreen /> */}
+      <ListingsScreen />
     </Screen>
   );
 }
