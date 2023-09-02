@@ -31,14 +31,18 @@ const Initialmessages = [
 ];
 
 const MessagesScreen = () => {
-  const [message, setMessage] = useState(Initialmessages);
-  const handleDeleteAction = () => {};
+  const [messages, setMessages] = useState(Initialmessages);
+
+  const handleDeleteAction = (message) => {
+    const newMessages = messages.filter((m) => m.id !== message.id);
+    setMessages(newMessages);
+  };
 
   return (
     <Screen>
       <FlatList
-        data={message}
-        keyExtractor={(messags) => messags.id}
+        data={messages}
+        keyExtractor={(messages) => messages.id}
         renderItem={({ item }) => (
           <Listitems
             title={item.title}
@@ -48,9 +52,7 @@ const MessagesScreen = () => {
               console.log("Message", item);
             }}
             renderRightActions={() => (
-              <ListItemDeleteAction
-                handleDeleteAction={() => console.log("HeLlo")}
-              />
+              <ListItemDeleteAction onpress={() => handleDeleteAction(item)} />
             )}
           />
         )}
