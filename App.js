@@ -12,15 +12,20 @@ import ViewImageScreen from "./screens/ViewImageScreen";
 import Card from "./components/Card";
 import ListingdetailsScreen from "./screens/ListingdetailsScreen";
 import MessagesScreen from "./screens/MessagesScreen";
+import Icon from "./components/Icon";
+import Screen from "./components/Screen";
 
 export default function App() {
   return (
-    <SafeAreaView style={styles.container}>
-      {/* <WelcomeScreen /> */}
-      {/* <ViewImageScreen /> */}
-      {/* <ListingdetailsScreen /> */}
-      <MessagesScreen />
-    </SafeAreaView>
+    <Screen>
+      <SafeAreaView style={styles.container}>
+        {/* <WelcomeScreen /> */}
+        {/* <ViewImageScreen /> */}
+        {/* <ListingdetailsScreen /> */}
+        {/* <MessagesScreen /> */}
+        <Icon name="email" />
+      </SafeAreaView>
+    </Screen>
   );
 }
 
