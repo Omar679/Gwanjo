@@ -7,7 +7,7 @@ import {
   Platform,
   StatusBar,
 } from "react-native";
-import React from "react";
+import { React, useState } from "react";
 import Listitems from "../components/Listitems";
 import Constants from "expo-constants";
 import Screen from "../components/Screen";
@@ -15,7 +15,7 @@ import Colors from "../utils/Colors";
 import ListItemSeperator from "../components/ListItemSeperator";
 import ListItemDeleteAction from "../components/ListItemDeleteAction";
 
-const messages = [
+const Initialmessages = [
   {
     id: 1,
     title: "T1",
@@ -31,11 +31,19 @@ const messages = [
 ];
 
 const MessagesScreen = () => {
+  const [messages, setMessages] = useState(Initialmessages);
+  const [refresh, setRefresh] = useState(false);
+
+  const handleDeleteAction = (message) => {
+    const newMessages = messages.filter((m) => m.id !== message.id);
+    setMessages(newMessages);
+  };
+
   return (
     <Screen>
       <FlatList
         data={messages}
-        keyExtractor={(messags) => messags.id}
+        keyExtractor={(messages) => messages.id}
         renderItem={({ item }) => (
           <Listitems
             title={item.title}
@@ -44,10 +52,23 @@ const MessagesScreen = () => {
             onPress={() => {
               console.log("Message", item);
             }}
-            renderRightActions={ListItemDeleteAction}
+            renderRightActions={() => (
+              <ListItemDeleteAction onpress={() => handleDeleteAction(item)} />
+            )}
           />
         )}
         ItemSeparatorComponent={() => <ListItemSeperator />}
+        refreshing={refresh}
+        onRefresh={() =>
+          setMessages([
+            {
+              id: 2,
+              title: "T2",
+              description: "D2",
+              image: require("../assets/images/ya-habu.jpeg"),
+            },
+          ])
+        }
       />
     </Screen>
   );
