@@ -3,6 +3,7 @@ import React from "react";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import defaultStyles from "../utils/Styles";
+import AppText from "./AppText";
 
 const AppTextInput = ({ icon, ...otherProps }) => {
   return (
@@ -15,7 +16,13 @@ const AppTextInput = ({ icon, ...otherProps }) => {
           style={styles.icon}
         />
       )}
-      <TextInput style={defaultStyles.text} {...otherProps} />
+      <TextInput
+        placeholderTextColor={
+          (placeholderTextColor = defaultStyles.Colors.medium)
+        }
+        style={defaultStyles.text}
+        {...otherProps}
+      />
     </View>
   );
 };
