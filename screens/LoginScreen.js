@@ -1,38 +1,46 @@
-import { Alert, Image, StyleSheet, Text, View } from "react-native";
-import React, { useState } from "react";
+import { Image, StyleSheet } from "react-native";
+import React from "react";
 import Screen from "../components/Screen";
 import AppTextInput from "../components/AppTextInput";
 import AppButton from "../components/AppButton";
+import { Formik } from "formik";
 
 const LoginScreen = () => {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
   return (
     <Screen style={styles.container}>
       <Image
         style={styles.logo}
         source={require("../assets/images/logo.png")}
       />
-      <AppTextInput
-        autoCapitalize="none"
-        autoCoreect={false}
-        icon="email"
-        onChangeText={(text) => setEmail(text)}
-        placeholder="Email"
-        keyboardType="email-address"
-        textContentType="emailAddress"
-      />
-      <AppTextInput
-        autoCapitalize="none"
-        autoCoreect={false}
-        icon="lock"
-        onChangeText={(text) => setPassword(text)}
-        placeholder="Password"
-        textContentType="password"
-        secureTextEntry
-      />
+      <Formik
+        initialValues={{ email: "", password: "" }}
+        onSubmit={(values) => console.log(values)}
+      >
+        {({ handleChange, handleSubmit }) => {
+          <>
+            <AppTextInput
+              autoCapitalize="none"
+              autoCoreect={false}
+              icon="email"
+              onChangeText={handleChange}
+              placeholder="Email"
+              keyboardType="email-address"
+              textContentType="emailAddress"
+            />
+            <AppTextInput
+              autoCapitalize="none"
+              autoCoreect={false}
+              icon="lock"
+              onChangeText={handleChange}
+              placeholder="Password"
+              textContentType="password"
+              secureTextEntry
+            />
 
-      <AppButton title="Login" onpress={() => console.log(email, password)} />
+            <AppButton title="Login" onpress={handleSubmit} />
+          </>;
+        }}
+      </Formik>
     </Screen>
   );
 };
