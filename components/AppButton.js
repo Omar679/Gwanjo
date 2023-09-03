@@ -6,7 +6,7 @@ const AppButton = ({ title, color = "primary", onpress }) => {
   return (
     <TouchableOpacity
       style={[styles.button, { backgroundColor: Colors[color] }]}
-      onpress={onpress}
+      onPress={onpress}
     >
       <Text style={styles.text}>{title}</Text>
     </TouchableOpacity>
@@ -18,7 +18,7 @@ export default AppButton;
 const styles = StyleSheet.create({
   button: {
     width: "100%",
-    height: 70,
+    height: 60,
     backgroundColor: Colors.primary,
     alignItems: "center",
     justifyContent: "center",
