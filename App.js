@@ -1,11 +1,10 @@
 import { StyleSheet, Switch } from "react-native";
 import { useState } from "react";
-import Screen from "./components/Screen";
-import AppPicker from "./components/AppPicker";
-import AppText from "./components/AppText";
-import AppTextInput from "./components/AppTextInput";
+
 import LoginScreen from "./screens/LoginScreen";
+import RegisterScreen from "./screens/RegisterScreen";
+import ListingEditScreen from "./screens/ListingEditScreen";
 
 export default function App() {
-  return <LoginScreen />;
+  return <ListingEditScreen />;
 }

@@ -1,64 +1,59 @@
-import { Image, StyleSheet } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import React from "react";
-import * as Yup from "yup";
-
 import { AppForm, AppFormField, SubmitButton } from "../components/Forms";
+
+import * as Yup from "yup";
 import Screen from "../components/Screen";
 
 const validationSchema = Yup.object().shape({
+  name: Yup.string().required().label("Name"),
   email: Yup.string().required().email().label("Email"),
   password: Yup.string().required().min(4).label("Password"),
 });
 
-const LoginScreen = () => {
+const RegisterScreen = () => {
   return (
     <Screen style={styles.container}>
-      <Image
-        style={styles.logo}
-        source={require("../assets/images/logo.png")}
-      />
       <AppForm
-        initialValues={{ email: "", password: "" }}
-        onSubmit={(values) => console.log(values)}
         validationSchema={validationSchema}
+        initialValues={{ email: "", name: "", password: "" }}
+        onSubmit={(item) => console.log(item)}
       >
+        <AppFormField
+          autoCorrect={false}
+          icon="account"
+          name="name"
+          placeholder="Name"
+        />
         <AppFormField
           autoCapitalize="none"
           autoCorrect={false}
           icon="email"
+          keyboardType="email-address"
           name="email"
           placeholder="Email"
-          keyboardType="email-address"
           textContentType="emailAddress"
         />
+
         <AppFormField
           autoCapitalize="none"
           autoCorrect={false}
           icon="lock"
-          name="Password"
+          name="password"
           placeholder="Password"
-          textContentType="password"
           secureTextEntry
+          textContentType="password"
         />
-
-        <SubmitButton title="Login" />
+        <SubmitButton title="Register" />
       </AppForm>
     </Screen>
   );
 };
 
-export default LoginScreen;
+export default RegisterScreen;
 
 const styles = StyleSheet.create({
   container: {
     padding: 10,
-  },
-  logo: {
-    height: 80,
-    width: 80,
-    alignSelf: "center",
-    marginTop: 50,
-    marginBottom: 20,
-    resizeMode: "contain",
   },
 });
