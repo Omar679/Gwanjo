@@ -7,6 +7,7 @@ import Screen from "../components/Screen";
 import AppTextInput from "../components/AppTextInput";
 import AppButton from "../components/AppButton";
 import AppText from "../components/AppText";
+import ErrorMessage from "../components/ErrorMessage";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label("Email"),
@@ -25,7 +26,7 @@ const LoginScreen = () => {
         onSubmit={(values) => console.log(values)}
         validationSchema={validationSchema}
       >
-        {({ handleChange, handleSubmit, errors }) => (
+        {({ handleChange, handleSubmit, errors, touched, setFieldTouched }) => (
           // Use parentheses to wrap the JSX elements you want to return
           <>
             <AppTextInput
@@ -33,21 +34,23 @@ const LoginScreen = () => {
               autoCoreect={false} // Should be 'autoCorrect' instead of 'autoCoreect'
               icon="email"
               onChangeText={handleChange("email")} // Add the field name ('email' or 'password') here
+              onBlur={() => setFieldTouched("email")}
               placeholder="Email"
               keyboardType="email-address"
               textContentType="emailAddress"
             />
-            <AppText style={{ color: "red" }}>{errors.email}</AppText>
+            <ErrorMessage error={errors.email} visible={touched.email} />
             <AppTextInput
               autoCapitalize="none"
               autoCorrect={false} // Correct the spelling to 'autoCorrect'
               icon="lock"
               onChangeText={handleChange("password")} // Add the field name ('email' or 'password') here
+              onBlur={() => setFieldTouched("password")}
               placeholder="Password"
               textContentType="password"
               secureTextEntry
             />
-            <AppText style={{ color: "red" }}>{errors.password}</AppText>
+            <ErrorMessage error={errors.password} visible={touched.password} />
             {/* Change 'email' to 'password' for password errors */}
             <AppButton title="Login" onpress={handleSubmit} />
             {/* Change 'onpress' to 'onPress' */}
