@@ -3,8 +3,8 @@ import React from "react";
 import Screen from "../components/Screen";
 import * as Yup from "yup";
 import { AppForm, AppFormField, SubmitButton } from "../components/Forms";
-import AppPicker from "../components/AppPicker";
-import AppFormPicker from "../components/AppFormPicker";
+import AppPicker from "../components/Picker";
+import AppFormPicker from "../components/Forms/FormPicker";
 import CategoryPickerItem from "../components/CategoryPickerItem";
 
 const validationSchema = Yup.object().shape({

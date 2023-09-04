@@ -13,6 +13,7 @@ import defaultStyles from "../utils/Styles";
 import AppText from "./AppText";
 import { TouchableNativeFeedback } from "react-native";
 import PickerItem from "./PickerItem";
+import AppTextInput from "./TextInput";
 
 const AppPicker = ({
   icon,
@@ -37,13 +38,13 @@ const AppPicker = ({
               style={styles.icon}
             />
           )}
-          <AppText style={styles.text}>
+          <AppTextInput style={styles.text}>
             {selectedItem ? (
               <AppText style={styles.text}> {selectedItem.label} </AppText>
             ) : (
               <AppText style={styles.placeholder}>{placeholder} </AppText>
             )}
-          </AppText>
+          </AppTextInput>
           <MaterialCommunityIcons
             name="chevron-down"
             size={20}

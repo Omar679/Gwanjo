@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import Icon from "./Icon";
-import AppText from "./AppText";
+import AppText from "./Text";
 
 const CategoryPickerItem = ({ item, onPress }) => {
   return (

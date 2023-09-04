@@ -7,7 +7,7 @@ import {
 import { TouchableHighlight } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-import AppText from "./AppText";
+import AppText from "./TextInput";
 import Colors from "../utils/Colors";
 import Screen from "./Screen";
 
