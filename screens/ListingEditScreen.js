@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import { AppForm, AppFormField, SubmitButton } from "../components/Forms";
 import AppPicker from "../components/AppPicker";
 import AppFormPicker from "../components/AppFormPicker";
+import CategoryPickerItem from "../components/CategoryPickerItem";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().min(1).label("Title"),
@@ -14,9 +15,60 @@ const validationSchema = Yup.object().shape({
 });
 
 const categories = [
-  { label: "Furniture", value: 1 },
-  { label: "Clothing", value: 2 },
-  { label: "Camera", value: 3 },
+  {
+    backgroundColor: "#fc5c65",
+    icon: "floor-lamp",
+    label: "Kayan Daki",
+    value: 1,
+  },
+  {
+    backgroundColor: "#fd9644",
+    icon: "car",
+    label: "Motoci",
+    value: 2,
+  },
+  {
+    backgroundColor: "#fed330",
+    icon: "camera",
+    label: "Camera",
+    value: 3,
+  },
+  {
+    backgroundColor: "#26de81",
+    icon: "cards",
+    label: "Wasanni",
+    value: 4,
+  },
+  {
+    backgroundColor: "#2bcbba",
+    icon: "shoe-heel",
+    label: "Kayan Sawa",
+    value: 5,
+  },
+  {
+    backgroundColor: "#45aaf2",
+    icon: "basketball",
+    label: "Wasannin Waje ",
+    value: 6,
+  },
+  {
+    backgroundColor: "#4b7bec",
+    icon: "headphones",
+    label: "kallo da Waqoqi",
+    value: 7,
+  },
+  {
+    backgroundColor: "#a55eea",
+    icon: "book-open-variant",
+    label: "Littafai",
+    value: 8,
+  },
+  {
+    backgroundColor: "#778ca3",
+    icon: "application",
+    label: "Wasu Abubuwan",
+    value: 9,
+  },
 ];
 const ListingEditScreen = () => {
   return (
@@ -37,11 +89,15 @@ const ListingEditScreen = () => {
           maxLength={8}
           name="price"
           placeholder="Price"
+          width={120}
         />
         <AppFormPicker
           items={categories}
           name="category"
+          PickerItemComponent={CategoryPickerItem}
           placeholder="Category"
+          width="50%"
+          numberOfColumns={3}
         />
         <AppFormField
           maxLength={255}
@@ -58,4 +114,8 @@ const ListingEditScreen = () => {
 
 export default ListingEditScreen;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    padding: 10,
+  },
+});

@@ -17,15 +17,18 @@ import PickerItem from "./PickerItem";
 const AppPicker = ({
   icon,
   items,
+  numberOfColumns = 1,
   onSelectItem,
+  PickerItemComponent = PickerItem,
   placeholder,
   selectedItem,
+  width = "100%",
 }) => {
   const [showModal, setShowModal] = useState(false);
   return (
     <>
       <TouchableNativeFeedback onPress={() => setShowModal(true)}>
-        <View style={styles.container}>
+        <View style={[styles.container, { width }]}>
           {icon && (
             <MaterialCommunityIcons
               name={icon}
@@ -53,8 +56,11 @@ const AppPicker = ({
         <FlatList
           data={items}
           keyExtractor={(item) => item.value.toString()}
+          key={numberOfColumns}
+          numColumns={numberOfColumns}
           renderItem={({ item }) => (
-            <PickerItem
+            <PickerItemComponent
+              item={item}
               label={item.label}
               onPress={() => {
                 setShowModal(false);
@@ -75,7 +81,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     borderRadius: 25,
     backgroundColor: defaultStyles.Colors.light,
-    width: "100%",
     alignItems: "center",
     padding: 15,
     marginVertical: 10,
