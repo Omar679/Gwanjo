@@ -3,8 +3,12 @@ import React from "react";
 
 import defaultStyles from "../utils/Styles";
 
-const AppText = ({ children, style }) => {
-  return <Text style={[defaultStyles.text, style]}>{children}</Text>;
+const AppText = ({ children, style, ...otherProps }) => {
+  return (
+    <Text {...otherProps} style={[defaultStyles.text, style]}>
+      {children}
+    </Text>
+  );
 };
 
 export default AppText;
