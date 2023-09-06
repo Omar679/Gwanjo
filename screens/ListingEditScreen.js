@@ -2,15 +2,16 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import Screen from "../components/Screen";
 import * as Yup from "yup";
-import { AppForm, AppFormField, SubmitButton } from "../components/Forms";
-import AppPicker from "../components/Picker";
-import AppFormPicker from "../components/Forms/FormPicker";
+import { AppForm, SubmitButton } from "../components/Forms";
 import CategoryPickerItem from "../components/CategoryPickerItem";
+import FormField from "../components/Forms/FormField";
+import Picker from "../components/Picker";
+import AppFormPicker from "../components/Forms/FormPicker";
 
 const validationSchema = Yup.object().shape({
-  title: Yup.string().min(1).label("Title"),
-  price: Yup.number().min(1).max(10000).label("Price"),
-  category: Yup.object().required().label("Category"),
+  title: Yup.string().required().min(1).label("Title"),
+  price: Yup.number().required().min(1).max(10000).label("Price"),
+  category: Yup.object().nullable().required().label("Category"),
   description: Yup.string().label("Description"),
 });
 
@@ -83,8 +84,8 @@ const ListingEditScreen = () => {
         onSubmit={(values) => console.log(values)}
         validationSchema={validationSchema}
       >
-        <AppFormField maxLength={255} name="title" placeholder="Title" />
-        <AppFormField
+        <FormField maxLength={255} name="title" placeholder="Title" />
+        <FormField
           keyboardType="numeric"
           maxLength={8}
           name="price"
@@ -99,7 +100,7 @@ const ListingEditScreen = () => {
           width="50%"
           numberOfColumns={3}
         />
-        <AppFormField
+        <FormField
           maxLength={255}
           multiline
           name="description"

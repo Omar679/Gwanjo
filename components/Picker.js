@@ -15,7 +15,7 @@ import { TouchableNativeFeedback } from "react-native";
 import PickerItem from "./PickerItem";
 import AppTextInput from "./TextInput";
 
-const AppPicker = ({
+const Picker = ({
   icon,
   items,
   numberOfColumns = 1,
@@ -38,13 +38,11 @@ const AppPicker = ({
               style={styles.icon}
             />
           )}
-          <AppTextInput style={styles.text}>
-            {selectedItem ? (
-              <AppText style={styles.text}> {selectedItem.label} </AppText>
-            ) : (
-              <AppText style={styles.placeholder}>{placeholder} </AppText>
-            )}
-          </AppTextInput>
+          {selectedItem ? (
+            <AppText style={styles.text}> {selectedItem.label} </AppText>
+          ) : (
+            <AppText style={styles.placeholder}>{placeholder} </AppText>
+          )}
           <MaterialCommunityIcons
             name="chevron-down"
             size={20}
@@ -52,7 +50,7 @@ const AppPicker = ({
           />
         </View>
       </TouchableNativeFeedback>
-      <Modal visible={showModal}>
+      <Modal visible={showModal} animationType="slide">
         <Button onPress={() => setShowModal(false)} title="close" />
         <FlatList
           data={items}
@@ -75,7 +73,7 @@ const AppPicker = ({
   );
 };
 
-export default AppPicker;
+export default Picker;
 
 const styles = StyleSheet.create({
   container: {
