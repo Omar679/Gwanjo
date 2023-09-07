@@ -1,6 +1,6 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
-import AppText from "./Text";
+import AppText from "./AppText";
 
 const PickerItem = ({ onPress, item }) => {
   return (
