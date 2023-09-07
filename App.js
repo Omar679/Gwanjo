@@ -1,37 +1,38 @@
-import { useEffect, useState } from "react";
-import * as ImagePicker from "expo-image-picker";
-import AppButton from "./components/Button";
+import { useEffect, useRef, useState } from "react";
 import { Image, StyleSheet } from "react-native";
 import Screen from "./components/Screen";
-import InputImage from "./components/InputImage";
+import ImageInputList from "./components/ImageInputList";
+import { ScrollView } from "react-native";
+import { View } from "react-native";
 
 export default function App() {
-  const [imageUri, setImageUri] = useState();
+  const [imageUris, setImageUris] = useState([]);
 
-  const requestPermission = async () => {
-    const { granted } = await ImagePicker.requestCameraPermissionsAsync();
-    if (!granted) alert("You need to grant permission ");
+  const handleAdd = (uri) => {
+    setImageUris([...imageUris, uri]);
   };
 
-  useEffect(() => {
-    requestPermission();
-  }, []);
-  const selectImage = async () => {
-    try {
-      const result = await ImagePicker.launchImageLibraryAsync();
-      if (!result.canceled) {
-        setImageUri(result.uri);
-      }
-    } catch (error) {
-      console.log("Error reading an image", error);
-    }
+  const handleRemove = (uri) => {
+    setImageUris(imageUris.filter((imageUri) => imageUri !== uri));
   };
+  const scrollView = useRef();
+
   return (
-    <Screen style={styles.container}>
-      <AppButton title="Select Image" onPress={selectImage} />
-      <Image source={{ uri: imageUri }} style={{ width: 200, height: 200 }} />
-      <InputImage imageUri={imageUri} />
-    </Screen>
+    <View>
+      <ScrollView
+        horizontal
+        ref={scrollView}
+        onContentSizeChange={() => scrollView.current.scrollToEnd()}
+      >
+        <Screen style={styles.container}>
+          <ImageInputList
+            imageUris={imageUris}
+            onAddImage={handleAdd}
+            onRemoveImage={handleRemove}
+          />
+        </Screen>
+      </ScrollView>
+    </View>
   );
 }
 const styles = StyleSheet.create({
