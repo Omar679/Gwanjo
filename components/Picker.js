@@ -8,12 +8,11 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-
 import defaultStyles from "../utils/Styles";
 import AppText from "./AppText";
-import { TouchableNativeFeedback } from "react-native";
+import { TouchableWithoutFeedback } from "react-native";
 import PickerItem from "./PickerItem";
-import AppTextInput from "./TextInput";
+import Screen from "./Screen";
 
 const AppPicker = ({
   icon,
@@ -28,7 +27,7 @@ const AppPicker = ({
   const [showModal, setShowModal] = useState(false);
   return (
     <>
-      <TouchableNativeFeedback onPress={() => setShowModal(true)}>
+      <TouchableWithoutFeedback onPress={() => setShowModal(true)}>
         <View style={[styles.container, { width }]}>
           {icon && (
             <MaterialCommunityIcons
@@ -49,25 +48,27 @@ const AppPicker = ({
             color={defaultStyles.Colors.medium}
           />
         </View>
-      </TouchableNativeFeedback>
-      <Modal visible={showModal}>
-        <Button onPress={() => setShowModal(false)} title="close" />
-        <FlatList
-          data={items}
-          keyExtractor={(item) => item.value.toString()}
-          key={numberOfColumns}
-          numColumns={numberOfColumns}
-          renderItem={({ item }) => (
-            <PickerItemComponent
-              item={item}
-              label={item.label}
-              onPress={() => {
-                setShowModal(false);
-                onSelectItem(item);
-              }}
-            />
-          )}
-        />
+      </TouchableWithoutFeedback>
+      <Modal visible={showModal} animationType="slide">
+        <Screen>
+          <Button onPress={() => setShowModal(false)} title="Close" />
+          <FlatList
+            data={items}
+            keyExtractor={(item) => item.value.toString()}
+            key={numberOfColumns}
+            numColumns={numberOfColumns}
+            renderItem={({ item }) => (
+              <PickerItemComponent
+                item={item}
+                label={item.label}
+                onPress={() => {
+                  setShowModal(false);
+                  onSelectItem(item);
+                }}
+              />
+            )}
+          />
+        </Screen>
       </Modal>
     </>
   );
