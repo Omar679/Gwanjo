@@ -1,15 +1,8 @@
 import { StyleSheet, Text, View, ImageBackground, Image } from "react-native";
 import React from "react";
-import AppButton from "../components/AppButton";
+import AppButton from "../components/Button";
 
-const WelcomeScreen = () => {
-  const handleLogin = () => {
-    console.log("Login");
-  };
-  const handleRegister = () => {
-    console.log("Login");
-  };
-
+const WelcomeScreen = ({ navigation }) => {
   return (
     <ImageBackground
       style={styles.image}
@@ -23,11 +16,11 @@ const WelcomeScreen = () => {
         <Text style={styles.text}>Sell things you are done using</Text>
       </View>
       <View style={styles.buttonContainer}>
-        <AppButton title="Login" onpress={handleLogin} />
+        <AppButton title="Login" onPress={() => navigation.navigate("Login")} />
         <AppButton
           title="Register"
           color="secondary"
-          onpress={handleRegister}
+          onPress={() => navigation.navigate("Register")}
         />
       </View>
     </ImageBackground>
