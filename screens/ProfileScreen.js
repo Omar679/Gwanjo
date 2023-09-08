@@ -5,6 +5,7 @@ import Colors from "../utils/Colors";
 import Screen from "../components/Screen";
 import Icon from "../components/Icon";
 import ListItemSeperator from "../components/ListItemSeperator";
+import routes from "../navigation/routes";
 
 const menuItems = [
   {
@@ -20,19 +21,19 @@ const menuItems = [
       name: "email",
       backgroundColor: Colors.secondary,
     },
+    targetScreen: routes.MESSAGES,
   },
 ];
 
-const ProfileScreen = () => {
+const ProfileScreen = ({ navigation }) => {
   return (
     <Screen style={styles.screen}>
-      <View style={styles.container}>
-        <Listitems
-          title="Abdullahi"
-          subtitle="Abdullahiimam@gmail.com"
-          image={require("../assets/images/ya-habu.jpeg")}
-        />
-      </View>
+      <Listitems
+        title="Abdullahi"
+        subtitle="Abdullahiimam@gmail.com"
+        image={require("../assets/images/ya-habu.jpeg")}
+      />
+
       <View style={styles.container}>
         <FlatList
           data={menuItems}
@@ -47,6 +48,7 @@ const ProfileScreen = () => {
                   backgroundColor={item.icon.backgroundColor}
                 />
               }
+              onPress={() => navigation.navigate(item.targetScreen)}
             />
           )}
         />
