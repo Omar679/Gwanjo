@@ -7,9 +7,7 @@ import {
 import { TouchableHighlight } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-import AppText from "./TextInput";
 import Colors from "../utils/Colors";
-import Screen from "./Screen";
 
 const Listitems = ({
   image,
@@ -27,13 +25,13 @@ const Listitems = ({
             {IconComponent}
             {image && <Image source={image} style={styles.image} />}
             <View style={styles.textContainer}>
-              <AppText numberOfLines={1} style={styles.title}>
+              <Text numberOfLines={1} style={styles.title}>
                 {title}
-              </AppText>
+              </Text>
               {subtitle && (
-                <AppText numberOfLines={2} style={styles.subtitle}>
+                <Text numberOfLines={2} style={styles.subtitle}>
                   {subtitle}
-                </AppText>
+                </Text>
               )}
             </View>
             <MaterialCommunityIcons
